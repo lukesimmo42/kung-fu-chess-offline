@@ -1,5 +1,6 @@
 const timeBetweenMoves = 5000;
 
+let connected = false;
 let width;
 let height;
 let selectedX;
@@ -17,7 +18,7 @@ let playingMultiplayer = false;
 let recentlyClicked = false;
 
 function preload() {
-  spritesheet = loadImage("chessSpriteBordered2.png");
+  spritesheet = loadImage("/static/chessSpriteBordered2.png");
 }
 const spriteWidth = 2000;
 const spriteHeight = 660;
@@ -268,17 +269,23 @@ function displayMessage() {
 
 //io object is declared in the socket.io.js library referenced in header
 //connect to the website
-/*let  socket  =  io.connect("http://127.0.0.1:8080/");
+let socket = null;
+try {
+  socket = io.connect("http://127.0.0.1:8080/");
 
-socket.on('message', function(text){
-  message = text;
-  console.log(message);
-});
+  socket.on('message', function (text) {
+    message = text;
+    console.log(message);
+  });
 
-socket.on("match found", function(side){
+  socket.on("match found", function (side) {
     console.log("match found");
     restart(side, "multiplayer");
-});*/
+  });
+  connected = true;
+} catch(err){
+  console.log("can't connect")
+}
 
 //resets the game
 function restart(side = "white",mode = "random AI versus random AI") {
