@@ -60,6 +60,7 @@ body {
   font-size: 2vw;
 }
 .button2 {
+  visibility: hidden
   cursor: pointer;
   background-color: black;
   border: none;
