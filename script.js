@@ -336,4 +336,4 @@ function restart(side = "white",mode = "random AI versus random AI") {
   }
 }
 
-restart("white","random AI versus random AI");
+//restart("white","random AI versus random AI");
