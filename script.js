@@ -278,6 +278,9 @@ socket.on("match found", function(side){
     restart(side, "multiplayer");
 });*/
 
+//time between AI moves
+const AIMoveInterval = 1000;
+
 //resets the game
 function restart(side = "white",mode = "random AI versus random AI") {
   console.log("restart");
@@ -309,9 +312,9 @@ function restart(side = "white",mode = "random AI versus random AI") {
       AI = setInterval(function(){randomAI(0)},500);//every 0.5 seconds a random white piece is moved
     }
   } else if (mode === "random AI versus random AI") {
-    AI = setInterval(function(){randomAI(0)},500);//every 0.5 seconds a random white piece is moved
+    AI = setInterval(function(){randomAI(0)},AIMoveInterval);//every x seconds a random white piece is moved
     setTimeout(function () {
-      AI2 = setInterval(function(){randomAI(1)},500);//every 0.5 seconds a random black piece is moved
+      AI2 = setInterval(function(){randomAI(1)},AIMoveInterval);//every x seconds a random black piece is moved
     }, 250);
     viewOfWhite = (side !== "black");//if no side passed then it is assumed that white was desired
     playingAsColor = -1;
