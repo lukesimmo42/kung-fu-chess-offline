@@ -8,7 +8,7 @@ let squareSelected = false;
 let positions = new Array(7);
 let spritesheet;
 let message = "";
-let playing = true;
+let playing = false;
 let viewOfWhite;
 let playingAsColor;
 let AI;
